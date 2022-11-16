@@ -1,0 +1,1 @@
+y = argument[0];
