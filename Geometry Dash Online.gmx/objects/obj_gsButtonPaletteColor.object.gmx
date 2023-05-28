@@ -155,8 +155,8 @@ alarm[0] = -1;
         }
         
         depth = -6;
-        ex_tween_play(__image_xscale__, image_xscale, 0.73, 30, scr_ease_out_bounce, true)
-        ex_tween_play(__image_yscale__, image_yscale, 0.73, 30, scr_ease_out_bounce, true)
+        ex_tween_play(__image_xscale__, image_xscale, 0.73, 30, scr_ease_out_bounce, false)
+        ex_tween_play(__image_yscale__, image_yscale, 0.73, 30, scr_ease_out_bounce, false)
     }
     
     is_over = false;
@@ -191,8 +191,8 @@ if(is_over) {
     }
 }
 
-ex_tween_play(__image_xscale__, image_xscale, 0.73, 0, scr_ease_linear, true)
-ex_tween_play(__image_yscale__, image_yscale, 0.73, 0, scr_ease_linear, true)
+ex_tween_play(__image_xscale__, image_xscale, 0.73, 0, scr_ease_linear, false)
+ex_tween_play(__image_yscale__, image_yscale, 0.73, 0, scr_ease_linear, false)
 
 depth = -6;
 </string>
@@ -248,8 +248,8 @@ depth = -6;
     is_down = true;
 }
 
-ex_tween_play(__image_xscale__, image_xscale, 0.9, 30, scr_ease_out_bounce, true)
-ex_tween_play(__image_yscale__, image_yscale, 0.9, 30, scr_ease_out_bounce, true)
+ex_tween_play(__image_xscale__, image_xscale, 0.9, 30, scr_ease_out_bounce, false)
+ex_tween_play(__image_yscale__, image_yscale, 0.9, 30, scr_ease_out_bounce, false)
 
 depth = -7;
 </string>
@@ -301,7 +301,7 @@ depth = -7;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ex_tween_play(PosGenX_, PosGenX, 0.5, 20, scr_ease_out_back, true)
+            <string>ex_tween_play(PosGenX_, PosGenX, 0.5, 20, scr_ease_out_back, false)
 </string>
           </argument>
         </arguments>

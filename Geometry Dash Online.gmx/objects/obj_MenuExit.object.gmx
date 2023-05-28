@@ -90,8 +90,8 @@ scr_create_gsButtonSimpleExt(obj_gsButtonExitGame, pos_x, pos_y, sprBtnExitGame,
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ex_tween_play(Scale_, Scale, 1, 25, scr_ease_out_back, true);
-ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 30, scr_ease_out_sine, true)
+            <string>ex_tween_play(Scale_, Scale, 1, 25, scr_ease_out_back, false);
+ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 30, scr_ease_out_sine, false)
 </string>
           </argument>
         </arguments>

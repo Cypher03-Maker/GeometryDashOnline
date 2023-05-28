@@ -30,6 +30,7 @@
 TextBox_Create(0,x,y,2,'0');
 
 TextBox_MaxChar(0,2);
+
 </string>
           </argument>
         </arguments>

@@ -32,7 +32,7 @@ globalvar Pause, Direction, xFlip, CameraX, CameraY, JumpOrd, TimeWarp, ColorRed
 screenShake = false;
 
 globalvar BGIndexLevel, GIndexLevel, FGIndexLevel, FGAlphaLevel, SongListLevel;
-BGIndexLevel = 0;
+BGIndexLevel = 25;
 GIndexLevel = 0;
 FGIndexLevel = 0;
 FGAlphaLevel = 0;

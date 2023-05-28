@@ -42,6 +42,7 @@ global.PageBalls = 1;
 global.PageShips = 1;
 global.PageUFOs = 1;
 global.PageWaves = 1;
+global.PageSmashers = 1;
 global.PageSpiders = 1;
 global.PageSwings = 1;
 global.PageJetPacks = 1;
@@ -92,6 +93,10 @@ global.ArmadilloNumber = 0;
 global.ArmadilloExtraNumber = 0;
 global.ArmadilloExtraAlpha = 1;
 
+global.SmasherNumber = 0;
+global.SmasherExtraNumber = 0;
+global.SmasherExtraAlpha = 0;
+
 global.ExplotionNumber = 0;
 global.SpecialEffectNumber = 0;
 global.PartBlend = 1;
@@ -141,6 +146,7 @@ global.Col03 = make_color_rgb(0, 255, 255);
 global.ColorMode = 1;
 global.FPSAlpha = 0;
 global.EnableCB = 0;
+global.vsync = true;
 </string>
           </argument>
         </arguments>

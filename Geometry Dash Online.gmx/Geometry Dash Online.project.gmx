@@ -173,6 +173,24 @@
               <sprite>sprites\sprArmadilloColExtra_02</sprite>
               <sprite>sprites\sprArmadilloColGlow_02</sprite>
             </sprites>
+            <sprites name="Smasher">
+              <sprite>sprites\sprSmasherCol01_part1</sprite>
+              <sprite>sprites\sprSmasherCol01_part2</sprite>
+              <sprite>sprites\sprSmasherCol01_part3</sprite>
+              <sprite>sprites\sprSmasherCol01_part4</sprite>
+              <sprite>sprites\sprSmasherCol01_part5</sprite>
+              <sprite>sprites\sprSmasherCol02_part1</sprite>
+              <sprite>sprites\sprSmasherCol02_part2</sprite>
+              <sprite>sprites\sprSmasherCol02_part3</sprite>
+              <sprite>sprites\sprSmasherCol02_part4</sprite>
+              <sprite>sprites\sprSmasherCol02_part5</sprite>
+              <sprite>sprites\sprSmasherColGlow_part1</sprite>
+              <sprite>sprites\sprSmasherColGlow_part2</sprite>
+              <sprite>sprites\sprSmasherColGlow_part3</sprite>
+              <sprite>sprites\sprSmasherColGlow_part4</sprite>
+              <sprite>sprites\sprSmasherColGlow_part5</sprite>
+              <sprite>sprites\sprSmasherColExtra_part1</sprite>
+            </sprites>
           </sprites>
           <sprite>sprites\sprExplotionVar</sprite>
           <sprite>sprites\sprSpecialEffectVar</sprite>
@@ -213,6 +231,8 @@
           <sprite>sprites\sprBtnCredits</sprite>
           <sprite>sprites\sprBtnParticleChange</sprite>
           <sprite>sprites\sprBtnCreditsIcons</sprite>
+          <sprite>sprites\sprBtnGameModeSmasherOn</sprite>
+          <sprite>sprites\sprBtnGameModeSmasherOff</sprite>
         </sprites>
         <sprites name="Deco">
           <sprite>sprites\sprCornerMenus</sprite>
@@ -386,6 +406,7 @@
         <script>scripts\SpiderAnimScripts.gml</script>
         <script>scripts\scr_links.gml</script>
         <script>scripts\ArmadilloAnimScripts.gml</script>
+        <script>scripts\SmasherAnimScripts.gml</script>
       </scripts>
       <scripts name="gSUI">
         <scripts name="gsButton">
@@ -672,6 +693,7 @@
         <object>objects\obj_GDOControler</object>
         <object>objects\obj_BackGround</object>
         <object>objects\obj_Transitions</object>
+        <object>objects\obj_deltaTime</object>
       </objects>
       <objects name="Menu02">
         <objects name="gsGUI">
@@ -724,6 +746,7 @@
             <object>objects\obj_gsButtonIcon07</object>
             <object>objects\obj_gsButtonIcon08</object>
             <object>objects\obj_gsButtonIcon09</object>
+            <object>objects\obj_gsButtonIcon10</object>
             <object>objects\obj_gsButtonCheckBoxPart</object>
             <object>objects\obj_gsButtonGroup</object>
             <object>objects\obj_gsButtonBase</object>
@@ -758,6 +781,7 @@
           <object>objects\obj_CustomOrd</object>
           <object>objects\obj_MusicControler</object>
           <object>objects\obj_ex_tween</object>
+          <object>objects\objIconSelector</object>
         </objects>
       </objects>
       <objects name="TheShop01">
@@ -1072,6 +1096,8 @@
   <timelines name="timelines">
     <timeline>timelines\TM_SpiderAnim01</timeline>
     <timeline>timelines\TM_SpiderAnim02</timeline>
+    <timeline>timelines\TM_SmasherAnim01</timeline>
+    <timeline>timelines\TM_SmasherAnim02</timeline>
   </timelines>
   <rooms name="rooms">
     <rooms name="GDO Rooms">

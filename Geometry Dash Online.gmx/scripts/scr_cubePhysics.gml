@@ -198,3 +198,67 @@ if (kLeft || kRight) {
         ArmadilloAnimState = "IDLE"
     }
 }
+#define scr_smasherPhysics
+// Wall cling to avoid accidental push-off
+if ((!cRight && !cLeft) || onGround) {
+    canStick = true;
+    sticking = false;
+}
+
+if (((kRight && cLeft) || (kLeft && cRight)) && canStick && !onGround) {
+    alarm[0] = clingTime;
+    sticking = true; 
+    canStick = false;       
+}
+
+// Wall jump
+if (kJump && cLeft && !onGround) {   
+    xscale = 0.5;
+    yscale = 1.5;
+                    
+    for (var i = 0; i < 4; i++)
+        instance_create(bbox_left, random_range(bbox_top, bbox_bottom), oFxDust);
+                 
+    // Wall jump is different when pushing off/towards the wall        
+    if (kLeft) {
+        vx = jumpHeight * .75;
+        vy = (-jumpHeight * gravDir) * 1.1;
+    } else {
+        vx = vxMax;    
+        vy = (-jumpHeight * gravDir) * 1.1;
+    }  
+} else if (kJump && cRight && !onGround) {   
+    xscale = 0.5;
+    yscale = 1.5;
+
+    for (var i = 0; i < 4; i++)
+        instance_create(bbox_right, random_range(bbox_top, bbox_bottom), oFxDust);
+                               
+    // Wall jump is different when pushing off/towards the wall  
+    if (kRight) {
+        vx = -jumpHeight * .75;
+        vy = (-jumpHeight * gravDir) * 1.1;
+    } else {
+        vx = -vxMax;    
+        vy = (-jumpHeight * gravDir) * 1.1;
+    }  
+}
+
+// Jump 
+if (kJump) {
+    if (onGround) {
+        // Fall thru platform
+        if (kDown) && (place_meeting(x, y + 1, oParJumpThru) && !place_meeting(x, y + 1, oParSolid)) {
+            ++y;
+        // Normal jump
+        } else {
+            if (gravDir == 1.00) {
+                instance_create(random_range(bbox_left, bbox_right), bbox_bottom, oFxDust);
+            } else if (gravDir == -1.00) {
+                instance_create(random_range(bbox_left, bbox_right), bbox_top, oFxDust);
+            }
+            
+            vy = -jumpHeight * gravDir;
+        }
+    }
+}

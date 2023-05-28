@@ -45,6 +45,8 @@ image_speed = 0;
 // sprite index
 image_xscale = 1;
 image_yscale = 1;
+ScaleIn = 1.25;
+ScaleOut = 1;
 
 // is the button down?
 is_down = false;
@@ -143,34 +145,59 @@ alarm[0] = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(position_meeting(mouse_x, mouse_y, self)) {  
-    if(!is_over) {
-        if(scripts[ev_mouse_enter] != noone) {
-            script_execute(scripts[ev_mouse_enter]);
-        }
-    }
-    
-    is_over = true;
-} else {
-    if(is_over) {
-        if(scripts[ev_mouse_leave] != noone) {
-            script_execute(scripts[ev_mouse_leave]);
+            <string>if (ScaleVar01) {
+    if(position_meeting(mouse_x, mouse_y, id)) {  
+        if(!is_over and ScaleVar01) {
+            if(scripts[ev_mouse_enter] != noone) {
+                script_execute(scripts[ev_mouse_enter]);
+            }
+            
+            if (device_mouse_check_button(0, mb_left)) {
+                ex_tween_play(__image_xscale__, image_xscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleIn, 20, scr_ease_out_bounce, false)
+            }
         }
         
-        ex_tween_play(__image_xscale__, image_xscale, 1, 30, scr_ease_out_bounce, true)
-        ex_tween_play(__image_yscale__, image_yscale, 1, 30, scr_ease_out_bounce, true)
+        is_over = true;
+    } else {
+        if(is_over and ScaleVar01) {
+            if(scripts[ev_mouse_leave] != noone) {
+                script_execute(scripts[ev_mouse_leave]);
+            }
+            
+            ex_tween_play(__image_xscale__, image_xscale, ScaleOut, 20, scr_ease_out_bounce, false)
+            ex_tween_play(__image_yscale__, image_yscale, ScaleOut, 20, scr_ease_out_bounce, false)
+        }
+        
+        is_over = false;
     }
     
-    is_over = false;
-}
-
-/*
-if(is_down) {
-    image_index = 2; 
-} else if(is_over || is_selected &amp;&amp; !is_down) {
-    image_index = 1;
-} else {
-    image_index = 0;
+    if(position_meeting(mouse_x, mouse_y, id)) {
+        if (device_mouse_check_button_pressed(0, mb_left)) {
+            
+            if(is_over and ScaleVar01) {
+                if(scripts[ev_left_press] != noone) {
+                    script_execute(scripts[ev_left_press]);
+                }
+                
+                is_down = true;
+                ex_tween_play(__image_xscale__, image_xscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleIn, 20, scr_ease_out_bounce, false)
+            }
+        }
+        else if (device_mouse_check_button_released(0, mb_left)) {
+            is_down = false;
+            
+            if(is_over and ScaleVar01) {
+                if(scripts[ev_left_release] != noone) {
+                        script_execute(scripts[ev_left_release]);
+                }
+                
+                ex_tween_play(__image_xscale__, image_xscale, ScaleOut, 0, scr_ease_linear, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleOut, 0, scr_ease_linear, false)
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -196,7 +223,7 @@ if(is_down) {
             <kind>1</kind>
             <string>is_down = false;
 
-if (ScaleVar01) {
+/*if (ScaleVar01) {
     if(is_over) {
         image_index = 1;
         
@@ -252,7 +279,7 @@ if (ScaleVar01) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ScaleVar01) {
+            <string>/*if (ScaleVar01) {
     if(is_over) {
         if(scripts[ev_left_press] != noone) {
             script_execute(scripts[ev_left_press]);
@@ -428,19 +455,11 @@ switch(group_id) {
     }
     break;
     
-    /*case 6:
-    if (global.PageGameModes == 6) {
-        sprite_index = sprBtnGameModeRobotOn
-    } else {
-        sprite_index = sprBtnGameModeRobotOff
-    }
-    break;*/
-    
     case 6:
     if (global.PageGameModes == 6) {
-        sprite_index = sprBtnGameModeArmadilloOn
+        sprite_index = sprBtnGameModeSmasherOn
     } else {
-        sprite_index = sprBtnGameModeArmadilloOff
+        sprite_index = sprBtnGameModeSmasherOff
     }
     break;
     
@@ -462,6 +481,14 @@ switch(group_id) {
     
     case 9:
     if (global.PageGameModes == 9) {
+        sprite_index = sprBtnGameModeArmadilloOn
+    } else {
+        sprite_index = sprBtnGameModeArmadilloOff
+    }
+    break;
+    
+    case 10:
+    if (global.PageGameModes == 10) {
         sprite_index = sprBtnGameModeJetPackOn
     } else {
         sprite_index = sprBtnGameModeJetPackOff

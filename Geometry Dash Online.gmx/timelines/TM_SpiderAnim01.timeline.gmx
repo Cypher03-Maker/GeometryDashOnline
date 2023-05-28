@@ -19,29 +19,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//ex_tween_play(scr_SpiderXState, SpiderXState, 5, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderYState, SpiderYState, 5, 120, scr_ease_out_quart, true);
+            <string>//ex_tween_play(scr_SpiderXState, SpiderXState, 5, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderYState, SpiderYState, 5, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderXState02, SpiderXState02, 3, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState02, SpiderYState02, 15, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState02, SpiderScaleYState02, 1, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderAngleState02, SpiderAngleState02, 15, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderXState02, SpiderXState02, 3, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState02, SpiderYState02, 15, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState02, SpiderScaleYState02, 1, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderAngleState02, SpiderAngleState02, 15, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderXState03, SpiderXState03, 36, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState03, SpiderYState03, 15, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState03, SpiderScaleYState03, 1, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, -15, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderXState03, SpiderXState03, 36, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState03, SpiderYState03, 15, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState03, SpiderScaleYState03, 1, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, -15, 120, scr_ease_out_quart, false);
 
-//ex_tween_play(scr_SpiderXState03, SpiderXState03, 36, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState04, SpiderYState04, 15, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState04, SpiderScaleYState04, 1, 120, scr_ease_out_quart, true);
-//ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, -15, 120, scr_ease_out_quart, true);
+//ex_tween_play(scr_SpiderXState03, SpiderXState03, 36, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState04, SpiderYState04, 15, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState04, SpiderScaleYState04, 1, 120, scr_ease_out_quart, false);
+//ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, -15, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderYState05, SpiderYState05, 10, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState05, SpiderScaleYState05, 1, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderYState05, SpiderYState05, 10, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState05, SpiderScaleYState05, 1, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderYState06, SpiderYState06, 15, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState06, SpiderScaleYState06, 1, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderYState06, SpiderYState06, 15, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState06, SpiderScaleYState06, 1, 120, scr_ease_out_quart, false);
 </string>
           </argument>
         </arguments>
@@ -67,29 +67,29 @@ ex_tween_play(scr_SpiderScaleYState06, SpiderScaleYState06, 1, 120, scr_ease_out
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//ex_tween_play(scr_SpiderXState, SpiderXState, 0, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderYState, SpiderYState, 0, 120, scr_ease_out_quart, true);
+            <string>//ex_tween_play(scr_SpiderXState, SpiderXState, 0, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderYState, SpiderYState, 0, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderXState02, SpiderXState02, 0, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState02, SpiderYState02, 11, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState02, SpiderScaleYState02, 1.17, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderAngleState02, SpiderAngleState02, 0, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderXState02, SpiderXState02, 0, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState02, SpiderYState02, 11, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState02, SpiderScaleYState02, 1.17, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderAngleState02, SpiderAngleState02, 0, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderXState03, SpiderXState03, 33, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState03, SpiderYState03, 11, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState03, SpiderScaleYState03, 1.17, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, 0, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderXState03, SpiderXState03, 33, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState03, SpiderYState03, 11, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState03, SpiderScaleYState03, 1.17, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderAngleState03, SpiderAngleState03, 0, 120, scr_ease_out_quart, false);
 
-//ex_tween_play(scr_SpiderXState04, SpiderXState03, 33, 120, scr_ease_out_quart, true)
-ex_tween_play(scr_SpiderYState04, SpiderYState04, 11, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState04, SpiderScaleYState04, 1.17, 120, scr_ease_out_quart, true);
-//ex_tween_play(scr_SpiderAngleState04, SpiderAngleState03, 0, 120, scr_ease_out_quart, true);
+//ex_tween_play(scr_SpiderXState04, SpiderXState03, 33, 120, scr_ease_out_quart, false)
+ex_tween_play(scr_SpiderYState04, SpiderYState04, 11, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState04, SpiderScaleYState04, 1.17, 120, scr_ease_out_quart, false);
+//ex_tween_play(scr_SpiderAngleState04, SpiderAngleState03, 0, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderYState05, SpiderYState05, 6, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState05, SpiderScaleYState05, 1.17, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderYState05, SpiderYState05, 6, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState05, SpiderScaleYState05, 1.17, 120, scr_ease_out_quart, false);
 
-ex_tween_play(scr_SpiderYState06, SpiderYState06, 13, 120, scr_ease_out_quart, true);
-ex_tween_play(scr_SpiderScaleYState06, SpiderScaleYState06, 1.17, 120, scr_ease_out_quart, true);
+ex_tween_play(scr_SpiderYState06, SpiderYState06, 13, 120, scr_ease_out_quart, false);
+ex_tween_play(scr_SpiderScaleYState06, SpiderScaleYState06, 1.17, 120, scr_ease_out_quart, false);
 </string>
           </argument>
         </arguments>

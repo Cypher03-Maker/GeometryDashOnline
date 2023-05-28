@@ -163,9 +163,9 @@ alarm[0] = -1;
             script_execute(scripts[ev_mouse_leave]);
         }
         
-        ex_tween_play(__image_xscale__, image_xscale, 0.85, 20, scr_ease_out_bounce, true)
-        ex_tween_play(__image_yscale__, image_yscale, 0.85, 20, scr_ease_out_bounce, true)
-        ex_tween_play(TextScale_, TextScale, 0.45, 20, scr_ease_out_bounce, true)
+        ex_tween_play(__image_xscale__, image_xscale, 0.85, 20, scr_ease_out_bounce, false)
+        ex_tween_play(__image_yscale__, image_yscale, 0.85, 20, scr_ease_out_bounce, false)
+        ex_tween_play(TextScale_, TextScale, 0.45, 20, scr_ease_out_bounce, false)
     }
     
     is_over = false;
@@ -212,9 +212,9 @@ if (ScaleVar02) {
         }
     }
     
-    ex_tween_play(__image_xscale__, image_xscale, 0.85, 0, scr_ease_linear, true)
-    ex_tween_play(__image_yscale__, image_yscale, 0.85, 0, scr_ease_linear, true)
-    ex_tween_play(TextScale_, TextScale, 0.45, 0, scr_ease_linear, true)
+    ex_tween_play(__image_xscale__, image_xscale, 0.85, 0, scr_ease_linear, false)
+    ex_tween_play(__image_yscale__, image_yscale, 0.85, 0, scr_ease_linear, false)
+    ex_tween_play(TextScale_, TextScale, 0.45, 0, scr_ease_linear, false)
 }
 </string>
           </argument>
@@ -270,9 +270,9 @@ if (ScaleVar02) {
         is_down = true;
     }
     
-    ex_tween_play(__image_xscale__, image_xscale, 1.05, 20, scr_ease_out_bounce, true)
-    ex_tween_play(__image_yscale__, image_yscale, 1.05, 20, scr_ease_out_bounce, true)
-    ex_tween_play(TextScale_, TextScale, 0.55, 20, scr_ease_out_bounce, true)
+    ex_tween_play(__image_xscale__, image_xscale, 1.05, 20, scr_ease_out_bounce, false)
+    ex_tween_play(__image_yscale__, image_yscale, 1.05, 20, scr_ease_out_bounce, false)
+    ex_tween_play(TextScale_, TextScale, 0.55, 20, scr_ease_out_bounce, false)
 }
 </string>
           </argument>
@@ -323,7 +323,7 @@ if (ScaleVar02) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ex_tween_play(PosGen_, PosGen, 0.5, 20, scr_ease_out_back, true)
+            <string>ex_tween_play(PosGen_, PosGen, 0.5, 20, scr_ease_out_back, false)
 </string>
           </argument>
         </arguments>

@@ -53,8 +53,8 @@ image_alpha = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ex_tween_play(PosGen_, PosGen, 1, 20, scr_ease_out_back, true)
-ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 30, scr_ease_out_sine, true)
+            <string>ex_tween_play(PosGen_, PosGen, 1, 20, scr_ease_out_back, false)
+ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 30, scr_ease_out_sine, false)
 </string>
           </argument>
         </arguments>

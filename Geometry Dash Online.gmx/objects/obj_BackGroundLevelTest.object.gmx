@@ -94,7 +94,7 @@ yscale = view_hview[0] / display_get_gui_height() * 1.45
 
 BGColorGeneral = make_colour_rgb(ColorRedBG, ColorGreenBG, ColorBlueBG);
 
-draw_sprite_tiled_ext(sprBackgroundGame, BGIndexLevel, vx, vy, xscale, yscale, BGColorGeneral, 1)
+draw_sprite_tiled_ext(sprBackgroundGame, 27, vx, vy, xscale, yscale, BGColorGeneral, 1)
 </string>
           </argument>
         </arguments>

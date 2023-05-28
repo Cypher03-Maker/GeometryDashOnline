@@ -84,6 +84,7 @@ image_yscale = 1.15 * ScaleBlocks;
 image_angle = 360 * AngleBlocks;
 
 draw_sprite_ext(sprOrbs, 6, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha)
+draw_text(x, y, string(portal2))
 </string>
           </argument>
         </arguments>

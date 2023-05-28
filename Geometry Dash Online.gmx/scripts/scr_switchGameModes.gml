@@ -36,9 +36,9 @@ switch(group_id) {
     global.PageGameModes = 9;
     break;
     
-    /*case 10:
+    case 10:
     global.PageGameModes = 10;
-    break;*/
+    break;
 }
 
 global.PageEffects = 3;

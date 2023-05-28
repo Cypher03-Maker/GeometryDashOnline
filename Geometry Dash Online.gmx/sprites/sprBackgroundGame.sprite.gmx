@@ -45,5 +45,8 @@
     <frame index="22">images\sprBackgroundGame_22.png</frame>
     <frame index="23">images\sprBackgroundGame_23.png</frame>
     <frame index="24">images\sprBackgroundGame_24.png</frame>
+    <frame index="25">images\sprBackgroundGame_25.png</frame>
+    <frame index="26">images\sprBackgroundGame_26.png</frame>
+    <frame index="27">images\sprBackgroundGame_27.png</frame>
   </frames>
 </sprite>

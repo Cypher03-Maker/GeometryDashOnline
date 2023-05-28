@@ -39,7 +39,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>// sprite animation speed
+image_speed = 0;
+
+// sprite index
+image_xscale = 0.95;
+image_yscale = 0.95;
+ScaleIn = 1.15;
+ScaleOut = 0.95;
+ScaleInDraw = 1.3;
+ScaleOutDraw = 1;
+image_xscale_draw = 1;
+image_yscale_draw = 1;
+ButtonMode = 0;
+AlphaDraw = 0;
+Alpha = 0;
+idVar = 0;
 
 // is the button down?
 is_down = false;
@@ -136,27 +151,71 @@ alarm[0] = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(position_meeting(mouse_x, mouse_y, self)) {  
-    if(!is_over) {
-        if(scripts[ev_mouse_enter] != noone) {
-            script_execute(scripts[ev_mouse_enter]);
-        }
-    }
-    
-    is_over = true;
-} else {
-    if(is_over) {
-        if(scripts[ev_mouse_leave] != noone) {
-            script_execute(scripts[ev_mouse_leave]);
+            <string>if (ScaleVar01) {
+    if(position_meeting(mouse_x, mouse_y, id)) {  
+        if(!is_over and ScaleVar01) {
+            if(scripts[ev_mouse_enter] != noone) {
+                script_execute(scripts[ev_mouse_enter]);
+            }
+            
+            if (device_mouse_check_button(0, mb_left)) {
+                ex_tween_play(__image_xscale__, image_xscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                
+                ex_tween_play(__image_xscale_draw__, image_xscale_draw, ScaleInDraw, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale_draw__, image_yscale_draw, ScaleInDraw, 20, scr_ease_out_bounce, false)
+            }
         }
         
-        ex_tween_play(__image_xscale__, image_xscale, 1, 30, scr_ease_out_bounce, true)
-        ex_tween_play(__image_yscale__, image_yscale, 1, 30, scr_ease_out_bounce, true)
+        is_over = true;
+    } else {
+        if(is_over and ScaleVar01) {
+            if(scripts[ev_mouse_leave] != noone) {
+                script_execute(scripts[ev_mouse_leave]);
+            }
+            
+            ex_tween_play(__image_xscale__, image_xscale, ScaleOut, 20, scr_ease_out_bounce, false)
+            ex_tween_play(__image_yscale__, image_yscale, ScaleOut, 20, scr_ease_out_bounce, false)
+            
+            ex_tween_play(__image_xscale_draw__, image_xscale_draw, ScaleOutDraw, 20, scr_ease_out_bounce, false)
+            ex_tween_play(__image_yscale_draw__, image_yscale_draw, ScaleOutDraw, 20, scr_ease_out_bounce, false)
+        }
         
-        depth = -3
+        is_over = false;
     }
     
-    is_over = false;
+    if(position_meeting(mouse_x, mouse_y, id)) {
+        if (device_mouse_check_button_pressed(0, mb_left)) {
+            
+            if(is_over and ScaleVar01) {
+                if(scripts[ev_left_press] != noone) {
+                    script_execute(scripts[ev_left_press]);
+                }
+                
+                is_down = true;
+                ex_tween_play(__image_xscale__, image_xscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleIn, 20, scr_ease_out_bounce, false)
+                
+                ex_tween_play(__image_xscale_draw__, image_xscale_draw, ScaleInDraw, 20, scr_ease_out_bounce, false)
+                ex_tween_play(__image_yscale_draw__, image_yscale_draw, ScaleInDraw, 20, scr_ease_out_bounce, false)
+            }
+        }
+        else if (device_mouse_check_button_released(0, mb_left)) {
+            is_down = false;
+            
+            if(is_over and ScaleVar01) {
+                if(scripts[ev_left_release] != noone) {
+                        script_execute(scripts[ev_left_release]);
+                }
+                
+                ex_tween_play(__image_xscale__, image_xscale, ScaleOut, 0, scr_ease_linear, false)
+                ex_tween_play(__image_yscale__, image_yscale, ScaleOut, 0, scr_ease_linear, false)
+                
+                ex_tween_play(__image_xscale_draw__, image_xscale_draw, ScaleOutDraw, 0, scr_ease_linear, false)
+                ex_tween_play(__image_yscale_draw__, image_yscale_draw, ScaleOutDraw, 0, scr_ease_linear, false)
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -182,7 +241,7 @@ alarm[0] = -1;
             <kind>1</kind>
             <string>is_down = false;
 
-if (ScaleVar01) {
+/*if (ScaleVar01) {
     if(is_over) {
         if(scripts[ev_left_release] != noone) {
             script_execute(scripts[ev_left_release]);
@@ -238,7 +297,7 @@ if (ScaleVar01) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ScaleVar01) {
+            <string>/*if (ScaleVar01) {
     if(is_over) {
         if(scripts[ev_left_press] != noone) {
             script_execute(scripts[ev_left_press]);
@@ -355,9 +414,10 @@ if (global.WaveNumber == wave_index) {
 }
 
 draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, 0, image_color_1, 0)
-draw_sprite_ext(sprWaveCol02, wave_index, x, y, image_xscale, image_yscale, 0, image_blend, 1)
-draw_sprite_ext(sprWaveCol01, wave_index, x, y, image_xscale, image_yscale, 0, make_color_rgb(170, 170, 170), 1)
-draw_sprite_ext(sprWaveColExtra, wave_extra_index, x, y, image_xscale, image_yscale, 0, image_blend, wave_extra_alpha)
+
+draw_sprite_ext(sprWaveCol02, wave_index, x, y, image_xscale_draw, image_yscale_draw, 0, image_blend, 1)
+draw_sprite_ext(sprWaveCol01, wave_index, x, y, image_xscale_draw, image_yscale_draw, 0, make_color_rgb(170, 170, 170), 1)
+draw_sprite_ext(sprWaveColExtra, wave_extra_index, x, y, image_xscale_draw, image_yscale_draw, 0, image_blend, wave_extra_alpha)
 </string>
           </argument>
         </arguments>

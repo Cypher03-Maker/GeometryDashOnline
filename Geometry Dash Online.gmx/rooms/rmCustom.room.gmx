@@ -6,7 +6,7 @@
   <vsnap>50</vsnap>
   <hsnap>50</hsnap>
   <isometric>0</isometric>
-  <speed>80</speed>
+  <speed>9999</speed>
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
@@ -19,15 +19,15 @@ instance_create(pos_x, pos_y - 167, obj_CustomImages)
 
 scr_create_gsButtonSimple(obj_gsButtonMenu01, pos_x, pos_y, sprBtnDir02, 3, 55, 55, c_white, c_white, noone, noone, noone, noone, scr_room_switch, 0, true);
 
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeCubeOff, 2, -257, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 1, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeShipOff, 2, -183, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 2, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeBallOff, 2, -110, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 3, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeUFOOff, 2, -37, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 4, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeWaveOff, 2, 37, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 5, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeArmadilloOff, 2, 110, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 6, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeSpiderOff, 2, 183, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 7, true);
-scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeSwingOff, 2, 257, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 8, true);
-//scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeArmadilloOff, 2, 331, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 10, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeCubeOff, 2, -300, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 1, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeShipOff, 2, -225, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 2, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeBallOff, 2, -150, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 3, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeUFOOff, 2, -75, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 4, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeWaveOff, 2, 0, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 5, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeSmasherOff, 2, 75, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 6, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeSpiderOff, 2, 150, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 7, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeSwingOff, 2, 225, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 8, true);
+scr_create_gsButtonSimple(obj_gsButtonGameMode, pos_x, pos_y, sprBtnGameModeArmadilloOff, 2, 300, -66, c_white, c_white, noone, noone, noone, noone, scr_switchGameModes, 9, true);
 
 scr_create_gsButtonSimple(obj_gsButtonEffects, pos_x, pos_y, sprBtnGameModeUFOOff, 2, -27, -1, c_white, c_white, noone, noone, noone, noone, scr_switchSpecialEffects, 1, true);
 scr_create_gsButtonSimple(obj_gsButtonEffects, pos_x, pos_y, sprBtnGameModeWaveOff, 2, 27, -1, c_white, c_white, noone, noone, noone, noone, scr_switchSpecialEffects, 2, true);

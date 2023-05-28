@@ -99,6 +99,37 @@ SpiderScaleXState06 = 1.74;
 SpiderScaleYState06 = 1.74;
 SpiderAngleState06 = -40;
 
+//Smasher
+SmasherXState = 0;
+SmasherYState = 0;
+SmasherScaleXState = 0.8;
+SmasherScaleYState = 0.8;
+SmasherAngleState = 0;
+
+SmasherXState02 = 0;
+SmasherYState02 = 0;
+SmasherScaleXState02 = 0.8;
+SmasherScaleYState02 = 0.8;
+SmasherAngleState02 = 0;
+
+SmasherXState03 = 0;
+SmasherYState03 = 0;
+SmasherScaleXState03 = 0.8
+SmasherScaleYState03 = 0.8
+SmasherAngleState03 = 0;
+
+SmasherXState04 = 0;
+SmasherYState04 = 0;
+SmasherScaleXState04 = 0.8
+SmasherScaleYState04 = 0.8
+SmasherAngleState04 = 0;
+
+SmasherXState05 = 0;
+SmasherYState05 = 0;
+SmasherScaleXState05 = 0.8
+SmasherScaleYState05 = 0.8
+SmasherAngleState05 = 0;
+
 SpiderAnimState = "IDLE";
 
 SpiderState = 0;
@@ -106,6 +137,12 @@ SpiderState = 0;
 SpiderAnimDest = false;
 
 ArmadilloAnimState = "IDLE";
+
+animation = 0;
+hmangle = 0;
+armangle = 0;
+ftangle = 0;
+hmlength = 3
 
 alarm[0] = 1
 alarm[3] = 1
@@ -836,6 +873,47 @@ alarm[3] = 1
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>if (animation == 0)
+    {
+        hmangle += (0.09)
+        armangle += (0.09)
+        ftangle = lerp(ftangle, 0, 0.2)
+        
+        SmasherYState = (-2 + (sin(hmangle) * -4))
+        SmasherAngleState = (sin(hmangle) * 1.1)
+        
+        SmasherYState02 = (-3 + ((cos(armangle) * 1.1) * 3))
+        SmasherYState03 = (-3 + ((cos(armangle) * 1.1) * 3))
+        
+        SmasherXState04 = lerp(SmasherXState04, 0, 0.2)
+        SmasherYState04 = lerp(SmasherYState04, 0, 0.2)
+        
+        SmasherXState05 = lerp(SmasherXState05, 0, 0.2)
+        SmasherYState05 = lerp(SmasherYState05, 0, 0.2)
+        
+        //SmasherAngleState04 = lerp(SmasherAngleState04, 0, 0.2)
+        //SmasherAngleState05 = lerp(SmasherAngleState05, 0, 0.2)
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>var pos_x = floor(view_wview*0.5);
 var pos_y = floor(view_hview*0.5);
 
@@ -880,25 +958,26 @@ switch(global.PageGameModeExt) {
     break;
     
     case 6:
-    draw_sprite_ext(sprArmadilloColGlow_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col03, 1)
-    draw_sprite_ext(sprArmadilloColGlow_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState02), (ArmadilloAngleState02), global.Col03, 1)
-    draw_sprite_ext(sprArmadilloColGlow_part3, global.ArmadilloNumber, x + 27 + ArmadilloXState03, y + 39 + ArmadilloYState03, (ArmadilloScaleXState03), (ArmadilloScaleYState03), (ArmadilloAngleState03), global.Col03, 1)
-    draw_sprite_ext(sprArmadilloColGlow_part4, global.ArmadilloNumber, x + 10 + ArmadilloXState04, y + 39 + ArmadilloYState04, (ArmadilloScaleXState04), (ArmadilloScaleYState04), (ArmadilloAngleState04), global.Col03, 1)
-    draw_sprite_ext(sprArmadilloColGlow_part5, global.ArmadilloNumber, x - 15 + ArmadilloXState05, y + 39 + ArmadilloYState05, (ArmadilloScaleXState05), (ArmadilloScaleYState05), (ArmadilloAngleState05), global.Col03, 1)
-    draw_sprite_ext(sprArmadilloColGlow_part6, global.ArmadilloNumber, x - 34 + ArmadilloXState06, y + 39 + ArmadilloYState06, (ArmadilloScaleXState06), (ArmadilloScaleYState06), (ArmadilloAngleState06), global.Col03, 1)
+    draw_sprite_ext(sprSmasherColGlow_part1, global.SmasherNumber, x + SmasherXState, y + SmasherYState, (SmasherScaleXState), (SmasherScaleYState), (SmasherAngleState), global.Col03, 1);
+    draw_sprite_ext(sprSmasherColGlow_part2, global.SmasherNumber, x + (SmasherXState02), y + (SmasherYState02), (SmasherScaleXState02), (SmasherScaleYState02), (SmasherAngleState02), global.Col03, 1);
+    draw_sprite_ext(sprSmasherColGlow_part3, global.SmasherNumber, x + (SmasherXState03), y + (SmasherYState03), (SmasherScaleXState03), (SmasherScaleYState03), (SmasherAngleState03), global.Col03, 1);
+    draw_sprite_ext(sprSmasherColGlow_part4, global.SmasherNumber, x + (SmasherXState04), y + (SmasherYState04), (SmasherScaleXState04), (SmasherScaleYState04), (SmasherAngleState04), global.Col03, 1);
+    draw_sprite_ext(sprSmasherColGlow_part5, global.SmasherNumber, x + (SmasherXState05), y + (SmasherYState05), (SmasherScaleXState05), (SmasherScaleYState05), (SmasherAngleState05), global.Col03, 1);
     
-    draw_sprite_ext(sprArmadilloCol01_part6, global.ArmadilloNumber, x - 34 + ArmadilloXState06, y + 39 + ArmadilloYState06, (ArmadilloScaleXState06), (ArmadilloScaleYState06), (ArmadilloAngleState06), global.Col01, 1)
-    draw_sprite_ext(sprArmadilloCol01_part5, global.ArmadilloNumber, x - 15 + ArmadilloXState05, y + 39 + ArmadilloYState05, (ArmadilloScaleXState05), (ArmadilloScaleYState05), (ArmadilloAngleState05), global.Col01, 1)
-    draw_sprite_ext(sprArmadilloCol01_part4, global.ArmadilloNumber, x + 8 + ArmadilloXState04, y + 39 + ArmadilloYState04, (ArmadilloScaleXState04), (ArmadilloScaleYState04), (ArmadilloAngleState04), global.Col01, 1)
-    draw_sprite_ext(sprArmadilloCol01_part3, global.ArmadilloNumber, x + 27 + ArmadilloXState03, y + 39 + ArmadilloYState03, (ArmadilloScaleXState03), (ArmadilloScaleYState03), (ArmadilloAngleState03), global.Col01, 1)
+    draw_sprite_ext(sprSmasherCol02_part3, global.SmasherNumber, x + SmasherXState03, y + SmasherYState03, (SmasherScaleXState03), (SmasherScaleYState03), (SmasherAngleState03), global.Col02, 1);
+    draw_sprite_ext(sprSmasherCol01_part3, global.SmasherNumber, x + SmasherXState03, y + SmasherYState03, (SmasherScaleXState03), (SmasherScaleYState03), (SmasherAngleState03), global.Col01, 1);
     
-    draw_sprite_ext(sprArmadilloCol02_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col02, 1)
-    draw_sprite_ext(sprArmadilloCol01_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col01, 1)
-    draw_sprite_ext(sprArmadilloCol02_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState02), (ArmadilloAngleState02), global.Col02, 1)
+    draw_sprite_ext(sprSmasherCol02_part5, global.SmasherNumber, x + (SmasherXState05), y + (SmasherYState05), (SmasherScaleXState05), (SmasherScaleYState05), (SmasherAngleState05), global.Col02, 1);
+    draw_sprite_ext(sprSmasherCol02_part4, global.SmasherNumber, x + (SmasherXState04), y + (SmasherYState04), (SmasherScaleXState04), (SmasherScaleYState04), (SmasherAngleState04), global.Col02, 1); 
+    draw_sprite_ext(sprSmasherCol01_part5, global.SmasherNumber, x + (SmasherXState05), y + (SmasherYState05), (SmasherScaleXState05), (SmasherScaleYState05), (SmasherAngleState05), global.Col01, 1);
+    draw_sprite_ext(sprSmasherCol01_part4, global.SmasherNumber, x + (SmasherXState04), y + (SmasherYState04), (SmasherScaleXState04), (SmasherScaleYState04), (SmasherAngleState04), global.Col01, 1); 
     
-    draw_sprite_ext(sprArmadilloColExtra_part1, global.ArmadilloExtraNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), c_white, global.ArmadilloExtraAlpha)
-    draw_sprite_ext(sprArmadilloCol01_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState06), (ArmadilloAngleState02), global.Col01, 1)
-    draw_sprite_ext(sprArmadilloColExtra_part2, global.ArmadilloExtraNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState06), (ArmadilloAngleState02), c_white, global.ArmadilloExtraAlpha)
+    draw_sprite_ext(sprSmasherCol02_part1, global.SmasherNumber, x + SmasherXState, y + SmasherYState, (SmasherScaleXState), (SmasherScaleYState), (SmasherAngleState), global.Col02, 1);
+    draw_sprite_ext(sprSmasherCol01_part1, global.SmasherNumber, x + SmasherXState, y + SmasherYState, (SmasherScaleXState), (SmasherScaleYState), (SmasherAngleState), global.Col01, 1);
+    
+    draw_sprite_ext(sprSmasherColExtra_part1, global.SmasherExtraNumber, x + SmasherXState, y + SmasherYState, (SmasherScaleXState), (SmasherScaleYState), (SmasherAngleState), c_white, global.SmasherExtraAlpha)
+    draw_sprite_ext(sprSmasherCol02_part2, global.SmasherNumber, x + SmasherXState02, y + SmasherYState02, (SmasherScaleXState02), (SmasherScaleYState02), (SmasherAngleState02), global.Col02, 1);
+    draw_sprite_ext(sprSmasherCol01_part2, global.SmasherNumber, x + SmasherXState02, y + SmasherYState02, (SmasherScaleXState02), (SmasherScaleYState02), (SmasherAngleState02), global.Col01, 1);
     break;
     
     case 7:
@@ -931,6 +1010,28 @@ switch(global.PageGameModeExt) {
     break;
     
     case 9:
+    draw_sprite_ext(sprArmadilloColGlow_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col03, 1)
+    draw_sprite_ext(sprArmadilloColGlow_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState02), (ArmadilloAngleState02), global.Col03, 1)
+    draw_sprite_ext(sprArmadilloColGlow_part3, global.ArmadilloNumber, x + 27 + ArmadilloXState03, y + 39 + ArmadilloYState03, (ArmadilloScaleXState03), (ArmadilloScaleYState03), (ArmadilloAngleState03), global.Col03, 1)
+    draw_sprite_ext(sprArmadilloColGlow_part4, global.ArmadilloNumber, x + 10 + ArmadilloXState04, y + 39 + ArmadilloYState04, (ArmadilloScaleXState04), (ArmadilloScaleYState04), (ArmadilloAngleState04), global.Col03, 1)
+    draw_sprite_ext(sprArmadilloColGlow_part5, global.ArmadilloNumber, x - 15 + ArmadilloXState05, y + 39 + ArmadilloYState05, (ArmadilloScaleXState05), (ArmadilloScaleYState05), (ArmadilloAngleState05), global.Col03, 1)
+    draw_sprite_ext(sprArmadilloColGlow_part6, global.ArmadilloNumber, x - 34 + ArmadilloXState06, y + 39 + ArmadilloYState06, (ArmadilloScaleXState06), (ArmadilloScaleYState06), (ArmadilloAngleState06), global.Col03, 1)
+    
+    draw_sprite_ext(sprArmadilloCol01_part6, global.ArmadilloNumber, x - 34 + ArmadilloXState06, y + 39 + ArmadilloYState06, (ArmadilloScaleXState06), (ArmadilloScaleYState06), (ArmadilloAngleState06), global.Col01, 1)
+    draw_sprite_ext(sprArmadilloCol01_part5, global.ArmadilloNumber, x - 15 + ArmadilloXState05, y + 39 + ArmadilloYState05, (ArmadilloScaleXState05), (ArmadilloScaleYState05), (ArmadilloAngleState05), global.Col01, 1)
+    draw_sprite_ext(sprArmadilloCol01_part4, global.ArmadilloNumber, x + 8 + ArmadilloXState04, y + 39 + ArmadilloYState04, (ArmadilloScaleXState04), (ArmadilloScaleYState04), (ArmadilloAngleState04), global.Col01, 1)
+    draw_sprite_ext(sprArmadilloCol01_part3, global.ArmadilloNumber, x + 27 + ArmadilloXState03, y + 39 + ArmadilloYState03, (ArmadilloScaleXState03), (ArmadilloScaleYState03), (ArmadilloAngleState03), global.Col01, 1)
+    
+    draw_sprite_ext(sprArmadilloCol02_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col02, 1)
+    draw_sprite_ext(sprArmadilloCol01_part1, global.ArmadilloNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), global.Col01, 1)
+    draw_sprite_ext(sprArmadilloCol02_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState02), (ArmadilloAngleState02), global.Col02, 1)
+    
+    draw_sprite_ext(sprArmadilloColExtra_part1, global.ArmadilloExtraNumber, x + ArmadilloXState, y + ArmadilloYState, (ArmadilloScaleXState), (ArmadilloScaleYState), (ArmadilloAngleState), c_white, global.ArmadilloExtraAlpha)
+    draw_sprite_ext(sprArmadilloCol01_part2, global.ArmadilloNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState06), (ArmadilloAngleState02), global.Col01, 1)
+    draw_sprite_ext(sprArmadilloColExtra_part2, global.ArmadilloExtraNumber, x + 48 + ArmadilloXState02, y + 23 + ArmadilloYState02, (ArmadilloScaleXState02), (ArmadilloScaleYState06), (ArmadilloAngleState02), c_white, global.ArmadilloExtraAlpha)
+    break;
+    
+    case 10:
     draw_sprite_ext(sprJetPackGlow, global.JetPackNumber, x, y, 1.74, 1.74, 0, global.Col03, 1)
     draw_sprite_ext(sprJetPackCol02, global.JetPackNumber, x, y, 1.74, 1.74, 0, global.Col02, 1)
     draw_sprite_ext(sprJetPackCol01, global.JetPackNumber, x, y, 1.74, 1.74, 0, global.Col01, 1)

@@ -93,8 +93,8 @@ with(CheckBox03) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ex_tween_play(PosGen_, PosGen, 0.5, 20, scr_ease_out_back, true)
-ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 20, scr_ease_out_sine, true)
+            <string>ex_tween_play(PosGen_, PosGen, 0.5, 20, scr_ease_out_back, false)
+ex_tween_play(AlphaBackGround_, AlphaBackGround, 0.5, 20, scr_ease_out_sine, false)
 </string>
           </argument>
         </arguments>

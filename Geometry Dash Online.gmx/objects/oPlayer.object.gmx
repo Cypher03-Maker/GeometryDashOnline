@@ -34,10 +34,20 @@ instance_create(x, y, obj_ArmadilloAnimControler)
 
 ChangeColor = false;
 EndLevel = false;
+canHit = false;
+canMove = true;
+animation = 0;
+hmangle = 0;
+armangle01 = 0;
+armangle02 = 0;
+ftangle01 = 0;
+ftangle02 = 0;
+
+hmlength = 3
 
 facing = 1;
 SpiderAlpha = 1.0;
-GameMode = 1;
+GameMode = 10;
 ArmadilloPos = 1;
 jumpState = 0;
 RotJetPack  = 0;
@@ -56,6 +66,7 @@ Teleport02 = false;
 SpeedVar = 1;
 GravState = 1;
 TimeWarp = 1;
+canAnim = false;
 
 // Movement ///////////////////////////////////////////////////////////////////
 
@@ -72,6 +83,8 @@ gravDir     = 1.00;
 gravRise    = 0.50;
 
 clingTime   = 4.0;
+tempAccel   = 0.0;
+tempFric    = 0.0;
 
 // Misc ///////////////////////////////////////////////////////////////////////
 
@@ -152,6 +165,85 @@ SpiderAngleState06 = -40;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SmasherXStateTime = 0;
+SmasherYStateTime = 0;
+SmasherScaleXStateTime = 0;
+SmasherScaleYStateTime = 0;
+SmasherAngleStateTime = 0;
+
+SmasherXState02Time = 0;
+SmasherYState02Time = 0;
+SmasherScaleXState02Time = 0;
+SmasherScaleYState02Time = 0;
+SmasherAngleState02Time = 0;
+
+SmasherXState03Time = 0;
+SmasherYState03Time = 0;
+SmasherScaleXState03Time = 0
+SmasherScaleYState03Time = 0
+SmasherAngleState03Time = 0;
+
+SmasherXState04Time = 0;
+SmasherYState04Time = 0;
+SmasherScaleXState04Time = 0
+SmasherScaleYState04Time = 0
+SmasherAngleState04Time = 0;
+
+SmasherXState05Time = 0;
+SmasherYState05Time = 0;
+SmasherScaleXState05Time = 0
+SmasherScaleYState05Time = 0
+SmasherAngleState05Time = 0;
+
+SmasherXState = 0;
+SmasherYState = 0;
+SmasherScaleXState = 0.6;
+SmasherScaleYState = 0.6;
+SmasherAngleState = 0;
+
+SmasherXState02 = 0;
+SmasherYState02 = 0;
+SmasherScaleXState02 = 0.6;
+SmasherScaleYState02 = 0.6;
+SmasherAngleState02 = 0;
+
+SmasherXState03 = 0;
+SmasherYState03 = 0;
+SmasherScaleXState03 = 0.6
+SmasherScaleYState03 = 0.6
+SmasherAngleState03 = 0;
+
+SmasherXState04 = 0;
+SmasherYState04 = 0;
+SmasherScaleXState04 = 0.6
+SmasherScaleYState04 = 0.6
+SmasherAngleState04 = 0;
+
+SmasherXState05 = 0;
+SmasherYState05 = 0;
+SmasherScaleXState05 = 0.6
+SmasherScaleYState05 = 0.6
+SmasherAngleState05 = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -171,6 +263,44 @@ SpiderAngleState06 = -40;
           <argument>
             <kind>1</kind>
             <string>room_restart();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SmasherYState = lerp(SmasherYState, 0, 0.2);
+SmasherAngleState = lerp(SmasherAngleState, 0, 0.2);
+
+SmasherXState02 = lerp(SmasherXState02, 0, 0.2);
+SmasherXState03 = lerp(SmasherXState02, 0, 0.2);
+
+SmasherYState02 = lerp(SmasherYState02, 0, 0.2);
+SmasherYState03 = lerp(SmasherYState03, 0, 0.2);
+
+SmasherAngleState02 = lerp(SmasherAngleState02, 0, 0.2);
+SmasherAngleState03 = lerp(SmasherAngleState03, 0, 0.2);
+
+SmasherXState04 = lerp(SmasherXState04, 0, 0.2);
+SmasherXState05 = lerp(SmasherXState05, 0, 0.2);
+SmasherYState04 = lerp(SmasherYState04, 0, 0.2);
+SmasherYState05 = lerp(SmasherYState05, 0, 0.2);
 </string>
           </argument>
         </arguments>
@@ -387,6 +517,11 @@ else {
         gravNorm    = 0.95 * TimeWarp;
         vyMax       = 24.0;
         break;
+        
+        case 10:
+        gravNorm    = 0.75 * TimeWarp;
+        vyMax       = 24.0;
+        break;
     }
 }
 </string>
@@ -480,16 +615,15 @@ kLeft        = keyboard_check(vk_left)           || keyboard_check(ord('A'))    
 kRight       = keyboard_check(vk_right)          || keyboard_check(ord('D'))          || gamepad_axis_value(0, gp_axislh) &gt;  0.40;
 kUp          = keyboard_check(vk_up)             || keyboard_check(ord('W'))          || gamepad_axis_value(0, gp_axislv) &lt; -0.40;
 kDown        = keyboard_check(vk_down)           || keyboard_check(ord('S'))          || gamepad_axis_value(0, gp_axislv) &gt;  0.75; // Test new values
+kHit         = keyboard_check_pressed(ord('X'))  || gamepad_button_check_pressed(0, gp_face2);
 
-kJump        = keyboard_check(vk_up)             || keyboard_check(ord('W'))          || keyboard_check(vk_space)         || gamepad_button_check(0, gp_face1);
+kJump        = keyboard_check(vk_up)             || keyboard_check(ord('W'))          || keyboard_check(vk_space)          || gamepad_button_check(0, gp_face1);
 kJumpPressed = keyboard_check_pressed(vk_up)     || keyboard_check_pressed(ord('W'))  || keyboard_check_pressed(vk_space)  || gamepad_button_check_pressed(0, gp_face1);
 kJumpRelease = keyboard_check_released(vk_up)    || keyboard_check_released(ord('W')) || keyboard_check_released(vk_space) || gamepad_button_check_released(0, gp_face1);
 
 // Movement ///////////////////////////////////////////////////////////////////
 
 // AkUppply the correct form of acceleration and friction
-var tempAccel, tempFric;
-
 if (onGround) {  
     tempAccel = groundAccel;
     tempFric  = groundFric;
@@ -511,17 +645,18 @@ if (!onGround) {
 }
 
 // Left 
+if (canMove == true) {
 if (kLeft &amp;&amp; !kRight &amp;&amp; !sticking) {
     facing = -1;
     state  = RUN;
     RotJetPack  = -16;
     
     // Apply acceleration left
-    if (vx &gt; 0)
+    if (vx &gt; 0) 
         vx = Approach(vx, 0, tempFric);   
     vx = Approach(vx, -vxMax * SpeedVar, tempAccel);
 // Right
-} else if (kRight &amp;&amp; !kLeft &amp;&amp; !sticking) {
+} else if (kRight &amp;&amp; !kLeft &amp;&amp; !sticking){
     facing = 1;
     state  = RUN;
     RotJetPack  = 16;
@@ -532,12 +667,20 @@ if (kLeft &amp;&amp; !kRight &amp;&amp; !sticking) {
     vx = Approach(vx, vxMax * SpeedVar, tempAccel);
 }
 
+if (kRight || kLeft) {
+    canAnim = true;
+}
+else {
+    canAnim = false;
+}
+
 // Friction
 if (!kRight &amp;&amp; !kLeft) {
     vx    = Approach(vx, 0, tempFric);
     state = IDLE;
     RotJetPack  = 0;
     //newimageangle   = lerp(newimageangle, 0, 0.15);
+}
 }
 
 if (GameMode = 6) {
@@ -594,6 +737,26 @@ if (GameMode == 7) {
     }
 }
 
+/*if (GameMode == 10) {
+    if canAnim == false {
+        alarm[3] = 1
+    }
+    
+    if (state == IDLE)
+        timeline_index = TM_SmasherAnim01;
+    else if (state == RUN)
+        timeline_index = TM_SmasherAnim02;
+        
+    if !timeline_running
+    {
+        timeline_position = 15;
+        
+        timeline_running = true;
+        timeline_loop = true;
+        timeline_speed = 0.35;
+    }
+}
+*/
 if StateAnim == 1 &amp;&amp; GameMode = 1 {
     scr_cubeRotation01();
 }
@@ -686,6 +849,13 @@ switch(GameMode) {
     case 9:
     JetPackRot = lerp(JetPackRot, -RotJetPack * facing, 0.10 * TimeWarp);
     scr_jetpackPhysics()
+    break;
+    
+    case 10:
+    scr_smasherPhysics()
+    SpiderAlpha = 1.00;
+    gravNorm    = 0.75 * TimeWarp;
+    vyMax       = 24.0;
     break;
 }
 
@@ -1157,7 +1327,6 @@ switch(GameMode) {
     draw_sprite_ext(sprSwingColExtra, global.SwingExtraNumber, x, y, facing * xscale, yscale, SwingRotation * facing, c_white, global.SwingExtraAlpha * image_alpha)
     break;
     
-    
     case 9:
     draw_set_blend_mode(bm_add)
     draw_sprite_ext(sprJetPackGlow, global.JetPackNumber, x, y, facing * xscale, yscale * gravDir, JetPackRot * facing * gravDir, global.Col03, image_alpha)
@@ -1170,6 +1339,187 @@ switch(GameMode) {
     
     draw_sprite_ext(sprJetPackCol02, global.JetPackNumber, x, y, facing * xscale, yscale * gravDir, JetPackRot * facing * gravDir, global.Col02, image_alpha)
     draw_sprite_ext(sprJetPackCol01, global.JetPackNumber, x, y, facing * xscale, yscale * gravDir, JetPackRot * facing * gravDir, global.Col01, image_alpha)
+    break;
+    
+    case 10:
+    if place_meeting(x, (y + gravDir), oParSolid) {
+        if (!canHit) {
+        if (vx &gt;= 0 || vx &lt;= 0)
+            animation = 1
+        if (vx = 0)
+            animation = 0
+        }
+    }
+    else
+    {
+        if (!canHit)
+            animation = 2;
+    }
+    
+    if (kHit &amp;&amp; !canHit) {
+        animation = 3;
+        canHit = true;
+        canMove = false;
+    }
+    
+    if (animation == 0)
+    {
+        SmasherYStateTime += (0.09) * gravDir
+        SmasherAngleStateTime += (0.09) * gravDir
+        
+        SmasherYState02Time += (0.09) * gravDir
+        SmasherYState03Time += (0.09) * gravDir
+        
+        SmasherYState = ((-2 + (sin(SmasherYStateTime) * -4)) * gravDir)
+        SmasherAngleState = ((sin(SmasherAngleStateTime) * 1.1) * gravDir)
+        
+        SmasherYState02 = (-3 + ((cos(SmasherYState02Time) * 1.1) * 3))
+        SmasherYState03 = (-3 + ((cos(SmasherYState03Time) * 1.1) * 3))
+        
+        SmasherXState04 = lerp(SmasherXState04, 0, 0.2)
+        SmasherYState04 = lerp(SmasherYState04, 0, 0.2)
+        
+        SmasherXState05 = lerp(SmasherXState05, 0, 0.2)
+        SmasherYState05 = lerp(SmasherYState05, 0, 0.2)
+        
+        //SmasherAngleState04 = lerp(SmasherAngleState04, 0, 0.2)
+        //SmasherAngleState05 = lerp(SmasherAngleState05, 0, 0.2)
+    }
+    
+    if (animation == 1)
+    {
+        SmasherYStateTime += (vx / 35) * gravDir
+        SmasherAngleStateTime += (vx / 35) * gravDir
+        
+        SmasherYState02Time += (vx / 35) * gravDir
+        SmasherYState03Time += (vx / 35) * gravDir
+        
+        SmasherXState04Time += (vx / 27) * facing
+        SmasherYState04Time += (vx / 27) * gravDir
+        
+        SmasherXState05Time += (vx / 27) * facing
+        SmasherYState05Time += (vx / 27) * gravDir
+        
+        SmasherAngleState04Time += (vx / 27) * gravDir
+        SmasherAngleState05Time += (vx / 27) * gravDir
+        
+        SmasherYState = ((-2 + (sin(SmasherYStateTime) * -4)) * gravDir)
+        SmasherAngleState = ((sin(SmasherAngleStateTime) * 1.1) * gravDir)
+        
+        SmasherYState02 = (-3 + ((cos(SmasherYState02Time) * 1.5) * 3))
+        SmasherYState03 = (-3 + ((cos(SmasherYState03Time) * 1.5) * 3))
+        
+        SmasherXState04 = (1 + ((cos(SmasherXState04Time - 22) * hmlength) * 2))
+        SmasherYState04 = ((-3) + ((sin(SmasherYState04Time + 22) * hmlength) * 1.5))
+        //SmasherAngleState04 = ((cos(ftangle) * 5) * gravDir)
+        
+        SmasherXState05 = (1 - ((cos((SmasherXState05Time + 15)) * hmlength) * 2))
+        SmasherYState05 = ((-3) + ((sin((SmasherYState05Time + 5)) * hmlength) * 1.5))
+        //SmasherAngleState05 = ((cos(ftangle) * 5) * gravDir)
+    }
+    
+    if (animation == 2)
+    {
+        SmasherYStateTime = (-vy / 10) * gravDir
+        SmasherAngleStateTime = (-vy / 10) * gravDir
+        
+        SmasherYState02Time = (-vy / 10) * gravDir
+        SmasherYState03Time = (-vy / 10) * gravDir
+        
+        SmasherXState04Time = (-vy / 10) * facing
+        SmasherYState04Time = (-vy / 10) * gravDir
+        
+        SmasherXState05Time = (-vy / 10) * facing
+        SmasherYState05Time = (-vy / 10) * gravDir
+        
+        SmasherAngleState04Time = (-vy / 10) * gravDir
+        SmasherAngleState05Time = (-vy / 10) * gravDir
+        
+        SmasherYState = lerp(SmasherXState04, 0, 0.2)
+        SmasherAngleState = (sin(SmasherAngleStateTime) * 8)
+        
+        SmasherYState02 = (3 + ((sin(SmasherYState02Time) * 2) * 6))
+        SmasherYState03 = (-1 + ((sin(SmasherYState03Time) * 2) * 6))
+        
+        SmasherXState04 = lerp(SmasherXState04Time, 0, 0.2)
+        SmasherXState05 = lerp(SmasherXState05Time, 0, 0.2)
+        
+        SmasherAngleState04 = lerp(SmasherAngleState04, 0, 0.2)
+        SmasherAngleState05 = lerp(SmasherAngleState05, 0, 0.2)
+        
+        SmasherYState04 = ((6) + ((sin(SmasherYState04Time - 0.5) * 1.5) * 1.5))
+        SmasherYState05 = ((3) + ((sin((SmasherYState05Time - 22)) * 1.5) * 5))
+    }
+    
+    if (animation == 3)
+    {
+        /*SmasherXState02Time += (0.3) * facing
+        
+        SmasherXState03Time += (0.1) * facing
+        
+        SmasherAngleState02Time += (0.3) * facing
+        SmasherAngleState03Time += (0.1) * facing
+        
+        SmasherYState = lerp(SmasherYState, 0, 0.2)
+        
+        SmasherXState02 = (-7 + ((sin(-SmasherXState02Time) * 6) * 9))
+        SmasherYState02 = (-7 + (sin(-SmasherXState02Time) * 9))
+        
+        SmasherXState03 = (-1 + ((sin(-SmasherXState03Time) * 2) * 6))
+        
+        SmasherAngleState02 = (sin(-SmasherAngleState02Time) * 6) * 9
+        SmasherAngleState03 = (sin(-SmasherAngleState03Time) * 6) * 9*/
+        
+        timeline_index = TM_SmasherAnim01;
+        
+        if !timeline_running &amp;&amp; canHit
+        {
+            timeline_position = 0;
+            
+            timeline_running = true;
+            timeline_loop = false;
+            timeline_speed = 0.35;
+        }
+        
+        vx = Approach(vx, 0, tempFric);
+        state = IDLE;
+    }
+    
+    /*if (animation == 1)
+    {
+        SmasherYState = (y - ((6 * gravdir) * image_xscale))
+        SmasherAngleState += ((0 - angle) / delay)
+        l1x = x
+        l1y = (y + ((6 * gravdir) * image_xscale))
+        l1angle += (((l1toangle * gravdir) - l1angle) / delay)
+        l2x = (x + (30 * image_xscale))
+        l2y = (y + ((4 * gravdir) * image_xscale))
+        l2angle += (((l2toangle * gravdir) - l2angle) / delay)
+        l3x = (x + (6 * image_xscale))
+        l3y = (y + ((4 * gravdir) * image_xscale))
+        l3angle += ((0 - l3angle) / delay)
+        l4x = (x - (6 * image_xscale))
+        l4y = (y - ((2 * gravdir) * image_xscale))
+        l4angle += (((56 * gravdir) - l4angle) / delay)
+    }
+    if (animation == 2)
+    {
+        SmasherYState = (y - ((6 * gravdir) * image_xscale))
+        SmasherAngleState += ((0 - SmasherAngleState) / delay)
+        l1x = x
+        l1y = (y + ((6 * gravdir) * image_xscale))
+        l1angle += ((((l1toangle - 90) * gravdir) - l1angle) / delay)
+        l2x = (x + (30 * image_xscale))
+        l2y = (y + ((4 * gravdir) * image_xscale))
+        l2angle += ((((l2toangle + 90) * gravdir) - l2angle) / delay)
+        l3x = (x + (6 * image_xscale))
+        l3y = (y + ((4 * gravdir) * image_xscale))
+        l3angle += (((45 * gravdir) - l3angle) / delay)
+        l4x = (x - (6 * image_xscale))
+        l4y = (y - ((2 * gravdir) * image_xscale))
+        l4angle += (((-34 * gravdir) - l4angle) / delay)
+    }*/
+    scr_smasherDraw()
     break;
 }
 </string>
